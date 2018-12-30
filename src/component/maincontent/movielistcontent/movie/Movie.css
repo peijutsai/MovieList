@@ -1,0 +1,24 @@
+.Movie {
+    margin: 50px 0;
+}
+
+.Operation {
+    margin: 10px 5px 15px 5px;
+    width: 80px;
+}
+
+.Title {
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.Font {
+    font-family: 'Lobster Two', cursive;
+    font-size: 18px;
+}
+
+.ButtomFont {
+    font-family: 'Satisfy', cursive;
+    font-weight: bold;
+}
