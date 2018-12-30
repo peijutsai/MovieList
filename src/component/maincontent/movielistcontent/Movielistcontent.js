@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react'
-import { Route } from 'react-router-dom'
+
 
 import axios from '../../../axios'
 
+import App from '../../../App'
 import Movie from '../movielistcontent/movie/Movie'
 import PageBar from './pagebar/PageBar'
 import Spinner from '../../../ui/spinner/Spinner'
@@ -41,20 +42,16 @@ class MovieListContent extends Component {
             })
     }
 
-    // previousPageHandler = () => {
-    //     if (this.state.currentPage > 1) {
-    //         this.fetchDataHandler(this.state.currentPage - 1)
-    //     }
-    // }
-
-    // nextPageHandler = () => {
-    //     if (this.state.currentPage < this.state.totalPage) {
-    //         this.fetchDataHandler(this.state.currentPage + 1)
-    //     }
-    // }
+    toggleLikedMoviesHandler = (id, movie) => {
+       if(App.likedMovies.has(id)) {
+           App.likedMovies.delete(id)
+        } else {
+           App.likedMovies.set(id, movie)
+       }
+       this.setState({})
+    }
 
     render() {
-        const photoLink = 'https://image.tmdb.org/t/p/w500'
         let movies = <Spinner />
 
         if (this.state.data) {
@@ -64,12 +61,8 @@ class MovieListContent extends Component {
                 return (
                     <Movie
                         key={res['id']}
-                        photo={photoLink.concat(res['poster_path'])}
-                        title={res['title']}
-                        date={res['release_date']}
-                        voteCount={res['vote_count']}
-                        averageScore={res['vote_average']}
-                        overview={res['overview']}
+                        toggleLikedMoviesHandler={this.toggleLikedMoviesHandler}
+                        movie={res}
                     />
                 )
             })
@@ -79,7 +72,7 @@ class MovieListContent extends Component {
             <Fragment>
                 <PageBar
                     currentpage={this.state.currentPage}
-                    totalpage={this.state.totalPage}/>
+                    totalpage={this.state.totalPage} />
                 <div>{movies}</div>
 
             </Fragment>

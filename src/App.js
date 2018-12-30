@@ -10,6 +10,7 @@ class App extends Component {
   }
 }
 
-App.likedMovies = []
+App.likedMovies = new Map()
+App.blockedMovies = []
 
 export default App;
