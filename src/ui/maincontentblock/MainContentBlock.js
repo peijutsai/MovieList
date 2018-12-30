@@ -12,7 +12,7 @@ const MainContentBlock = () => {
     return (
         <Switch>
             <Route path='/homepage' exact component={HomePageContent} />
-            <Route path='/movielist' exact component={MovieListContent} />
+            <Route path='/movielist/:id' component={MovieListContent} />
             <Route path='/movielistofliked' exact component={MovieListOfLikedContent} />
             <Route path='/movielistofblocked' exact component={MovieListOfBlockedContent} />
         </Switch>

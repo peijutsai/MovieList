@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './Movie.css'
+import App from '../../../../App';
 
 const Movie = (props) => {
 
@@ -14,7 +15,7 @@ const Movie = (props) => {
                         <img src={props.photo} alt='photo' width="100%" style={{ maxWidth: '300px' }} className="rounded mx-auto d-block" />
                     </div>
                     <div className='col-sm-12 col-md-12 d-flex justify-content-center'>
-                        <button type="button" className="btn btn-danger Operation ButtomFont">Like</button>
+                        <button type="button" className="btn btn-danger Operation ButtomFont" onClick={() => {App.likedMovies.push(props.title)}}>Like</button>
                         <button type="button" className="btn btn-secondary Operation ButtomFont">Block</button>
                     </div>
                 </div>

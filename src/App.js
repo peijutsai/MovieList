@@ -10,4 +10,6 @@ class App extends Component {
   }
 }
 
+App.likedMovies = []
+
 export default App;

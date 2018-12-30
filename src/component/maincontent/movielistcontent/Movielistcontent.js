@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { Route } from 'react-router-dom'
 
 import axios from '../../../axios'
 
@@ -12,14 +13,21 @@ class MovieListContent extends Component {
         super(props)
         this.state = {
             data: [],
-            currentPage: 1,
+            currentPage: +this.props.match.params.id,
             totalPage: null
         }
     }
 
+    // Call at the first time
     componentDidMount() {
-        console.log('componentDidMount')
-        this.fetchDataHandler(this.state.currentPage)
+        this.fetchDataHandler(+this.props.match.params.id)
+    }
+
+    // Call everytime when url has changed
+    componentDidUpdate() {
+        if (this.state.currentPage != +this.props.match.params.id) {
+            this.fetchDataHandler(+this.props.match.params.id)
+        }
     }
 
     fetchDataHandler = (page) => {
@@ -33,17 +41,17 @@ class MovieListContent extends Component {
             })
     }
 
-    previousPageHandler = () => {
-        if (this.state.currentPage > 1) {
-            this.fetchDataHandler(this.state.currentPage - 1)
-        }
-    }
+    // previousPageHandler = () => {
+    //     if (this.state.currentPage > 1) {
+    //         this.fetchDataHandler(this.state.currentPage - 1)
+    //     }
+    // }
 
-    nextPageHandler = () => {
-        if (this.state.currentPage < this.state.totalPage) {
-            this.fetchDataHandler(this.state.currentPage + 1)
-        }
-    }
+    // nextPageHandler = () => {
+    //     if (this.state.currentPage < this.state.totalPage) {
+    //         this.fetchDataHandler(this.state.currentPage + 1)
+    //     }
+    // }
 
     render() {
         const photoLink = 'https://image.tmdb.org/t/p/w500'
@@ -71,11 +79,12 @@ class MovieListContent extends Component {
             <Fragment>
                 <PageBar
                     currentpage={this.state.currentPage}
-                    totalpage={this.state.totalPage}
-                    clickedpreviouspage={this.previousPageHandler}
-                    clickednextpage={this.nextPageHandler} />
+                    totalpage={this.state.totalPage}/>
                 <div>{movies}</div>
+
             </Fragment>
+
+
         )
     }
 }
