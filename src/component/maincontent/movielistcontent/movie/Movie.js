@@ -1,7 +1,10 @@
 import React from 'react'
 
 import './Movie.css'
+
 import App from '../../../../App';
+
+import heart from '../../../../assests/heart_movielist.png'
 
 const Movie = (props) => {
     const photoLink = 'https://image.tmdb.org/t/p/w500'
@@ -42,13 +45,22 @@ const Movie = (props) => {
             {/* Title & Description */}
             <div className="col-sm-12 col-md-4 d-flex align-items-center">
                 <div className="row">
-                    <div className='col-12 text-center Title'>{props.movie['title']}</div>
-                    <div className='col-12 text-center Font'>Release Date: {props.movie['release_date']}</div>
+                    <div
+                        className='col-12 text-center Title'>
+                        <img src={heart} alt='hearticon' className='Heart'/>
+                        {props.movie['title']}
+                    </div>
+                    <div
+                        className='col-12 text-center Font'>
+                        Release Date: {props.movie['release_date']}
+                    </div>
                     <div className='col-12 text-center'>
                         <span className='Font'>Vote Count: {props.movie['vote_count']} | </span>
                         <span className='Font'>Average Score: {props.movie['vote_average']}/10</span>
                     </div>
-                    <div className='col-12 text-center Font'>{props.movie['overview']}</div>
+                    <div className='col-12 text-center Font'>
+                        {props.movie['overview']}
+                    </div>
                 </div>
             </div>
         </div>
