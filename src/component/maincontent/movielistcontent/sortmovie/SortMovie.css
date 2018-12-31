@@ -8,3 +8,9 @@
     margin-right: 5px;
     margin-top: 20px;
 }
+
+.SortBar > button > img {
+    width: 13px;
+    margin-left: 5px;
+    margin-bottom: 3px;
+}

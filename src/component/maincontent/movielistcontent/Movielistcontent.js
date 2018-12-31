@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 
-
 import axios from '../../../axios'
 
 import App from '../../../App'
@@ -16,7 +15,11 @@ class MovieListContent extends Component {
         this.state = {
             data: [],
             currentPage: +this.props.match.params.id,
-            totalPage: null
+            totalPage: null,
+            sortTitle: true,
+            sortVoteCount: true,
+            sortVoteAverage: true,
+            sortDate: true
         }
 
         this.movieCahce = {}
@@ -74,80 +77,148 @@ class MovieListContent extends Component {
     }
 
     sortByTitle = () => {
-        this.state.data.sort(function (movie1, movie2) {
+        if (this.state.sortTitle) {
+            this.state.data.sort(function (movie1, movie2) {
 
-            if (movie1['title'] > movie2['title']) {
-                return 1
+                if (movie1['title'] > movie2['title']) {
+                    return 1
 
-            } else if (movie1['title'] < movie2['title']) {
-                return -1
+                } else if (movie1['title'] < movie2['title']) {
+                    return -1
 
-            } else {
-                return 0
-            }
-        })
+                } else {
+                    return 0
+                }
+            })
 
-        this.setState({
+        } else {
+            this.state.data.sort(function (movie1, movie2) {
+
+                if (movie1['title'] > movie2['title']) {
+                    return -1
+
+                } else if (movie1['title'] < movie2['title']) {
+                    return 1
+
+                } else {
+                    return 0
+                }
+            })
+        }
+
+        this.setState(prevState => ({
+            sortTitle: !prevState.sortTitle,
             data: this.state.data
-        })
+        }))
     }
 
     sortByVoteCount = () => {
-        this.state.data.sort(function (movie1, movie2) {
+        if (this.state.sortVoteCount) {
+            this.state.data.sort(function (movie1, movie2) {
 
-            if (movie1['vote_count'] > movie2['vote_count']) {
-                return 1
+                if (movie1['vote_count'] > movie2['vote_count']) {
+                    return 1
 
-            } else if (movie1['vote_count'] < movie2['vote_count']) {
-                return -1
+                } else if (movie1['vote_count'] < movie2['vote_count']) {
+                    return -1
 
-            } else {
-                return 0
-            }
-        })
+                } else {
+                    return 0
+                }
+            })
 
-        this.setState({
+        } else {
+            this.state.data.sort(function (movie1, movie2) {
+
+                if (movie1['vote_count'] > movie2['vote_count']) {
+                    return -1
+
+                } else if (movie1['vote_count'] < movie2['vote_count']) {
+                    return 1
+
+                } else {
+                    return 0
+                }
+            })
+        }
+
+        this.setState(prevState => ({
+            sortVoteCount: !prevState.sortVoteCount,
             data: this.state.data
-        })
+        }))
     }
 
     sortByVoteAverage = () => {
-        this.state.data.sort(function (movie1, movie2) {
+        if (this.state.sortVoteAverage) {
+            this.state.data.sort(function (movie1, movie2) {
 
-            if (movie1['vote_average'] > movie2['vote_average']) {
-                return 1
+                if (movie1['vote_average'] > movie2['vote_average']) {
+                    return 1
 
-            } else if (movie1['vote_average'] < movie2['vote_average']) {
-                return -1
+                } else if (movie1['vote_average'] < movie2['vote_average']) {
+                    return -1
 
-            } else {
-                return 0
-            }
-        })
+                } else {
+                    return 0
+                }
+            })
 
-        this.setState({
+        } else {
+            this.state.data.sort(function (movie1, movie2) {
+
+                if (movie1['vote_average'] > movie2['vote_average']) {
+                    return -1
+
+                } else if (movie1['vote_average'] < movie2['vote_average']) {
+                    return 1
+
+                } else {
+                    return 0
+                }
+            })
+        }
+
+        this.setState(prevState => ({
+            sortVoteAverage: !prevState.sortVoteAverage,
             data: this.state.data
-        })
+        }))
 
     }
 
     sortByReleaseDate = () => {
-        this.state.data.sort(function (movie1, movie2) {
+        if (this.state.sortDate) {
+            this.state.data.sort(function (movie1, movie2) {
 
-            if (movie1['release_date'] > movie2['release_date']) {
-                return 1
+                if (movie1['title'] > movie2['title']) {
+                    return 1
 
-            } else if (movie1['release_date'] < movie2['release_date']) {
-                return -1
+                } else if (movie1['title'] < movie2['title']) {
+                    return -1
 
-            } else {
-                return 0
-            }
-        })
+                } else {
+                    return 0
+                }
+            })
 
-        this.setState({
+        } else {
+            this.state.data.sort(function (movie1, movie2) {
+
+                if (movie1['release_date'] > movie2['release_date']) {
+                    return -1
+
+                } else if (movie1['release_date'] < movie2['release_date']) {
+                    return 1
+
+                } else {
+                    return 0
+                }
+            })
+        }
+
+        this.setState(prevState => ({
+            sortDate: !prevState.sortDate,
             data: this.state.data
-        })
+        }))
 
     }
 
@@ -179,6 +250,10 @@ class MovieListContent extends Component {
         return (
             <Fragment>
                 <SortBar
+                    sortTitleStatus={this.state.sortTitle}
+                    sortVoteCountStatus={this.state.sortVoteCount}
+                    sortVoteAverageStatus={this.state.sortVoteAverage}
+                    sortDateStatus={this.state.sortDate}
                     sortByTitle={this.sortByTitle}
                     sortByVoteCount={this.sortByVoteCount}
                     sortByVoteAverage={this.sortByVoteAverage}
