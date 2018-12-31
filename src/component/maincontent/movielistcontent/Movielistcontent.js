@@ -7,6 +7,7 @@ import App from '../../../App'
 import Movie from '../movielistcontent/movie/Movie'
 import PageBar from './pagebar/PageBar'
 import Spinner from '../../../ui/spinner/Spinner'
+import SortBar from './sortmovie/SortMovie'
 
 class MovieListContent extends Component {
 
@@ -43,12 +44,90 @@ class MovieListContent extends Component {
     }
 
     toggleLikedMoviesHandler = (id, movie) => {
-       if(App.likedMovies.has(id)) {
-           App.likedMovies.delete(id)
+        if (App.likedMovies.has(id)) {
+            App.likedMovies.delete(id)
         } else {
-           App.likedMovies.set(id, movie)
-       }
-       this.setState({})
+            App.likedMovies.set(id, movie)
+        }
+        this.setState({})
+    }
+
+    sortByTitle = () => {
+        this.state.data.sort(function (movie1, movie2) {
+
+            if (movie1['title'] > movie2['title']) {
+                return 1
+
+            } else if (movie1['title'] < movie2['title']) {
+                return -1
+
+            } else {
+                return 0
+            }
+        })
+
+        this.setState({
+            data: this.state.data
+        })
+    }
+
+    sortByVoteCount = () => {
+        this.state.data.sort(function (movie1, movie2) {
+
+            if (movie1['vote_count'] > movie2['vote_count']) {
+                return 1
+
+            } else if (movie1['vote_count'] < movie2['vote_count']) {
+                return -1
+
+            } else {
+                return 0
+            }
+        })
+
+        this.setState({
+            data: this.state.data
+        })
+    }
+
+    sortByVoteAverage = () => {
+        this.state.data.sort(function (movie1, movie2) {
+
+            if (movie1['vote_average'] > movie2['vote_average']) {
+                return 1
+
+            } else if (movie1['vote_average'] < movie2['vote_average']) {
+                return -1
+
+            } else {
+                return 0
+            }
+        })
+
+        this.setState({
+            data: this.state.data
+        })
+
+    }
+
+    sortByReleaseDate = () => {
+        this.state.data.sort(function (movie1, movie2) {
+
+            if (movie1['release_date'] > movie2['release_date']) {
+                return 1
+
+            } else if (movie1['release_date'] < movie2['release_date']) {
+                return -1
+
+            } else {
+                return 0
+            }
+        })
+
+        this.setState({
+            data: this.state.data
+        })
+
     }
 
     render() {
@@ -70,6 +149,11 @@ class MovieListContent extends Component {
 
         return (
             <Fragment>
+                <SortBar
+                    sortByTitle={this.sortByTitle}
+                    sortByVoteCount={this.sortByVoteCount}
+                    sortByVoteAverage={this.sortByVoteAverage}
+                    sortByReleaseDate={this.sortByReleaseDate} />
                 <PageBar
                     currentpage={this.state.currentPage}
                     totalpage={this.state.totalPage} />
