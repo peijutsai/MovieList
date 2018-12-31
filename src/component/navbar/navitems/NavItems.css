@@ -3,3 +3,9 @@ div a {
     font-family: 'Charm', cursive;
     color: black;
 }
+
+div a:hover {
+    text-decoration: none;
+    color: black;
+}
+

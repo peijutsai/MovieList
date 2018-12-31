@@ -16,10 +16,10 @@ class MovieListContent extends Component {
             data: [],
             currentPage: +this.props.match.params.id,
             totalPage: null,
-            sortTitle: true,
-            sortVoteCount: true,
-            sortVoteAverage: true,
-            sortDate: true
+            sortTitle: false,
+            sortVoteCount: false,
+            sortVoteAverage: false,
+            sortDate: false
         }
 
         this.movieCahce = {}
@@ -226,8 +226,7 @@ class MovieListContent extends Component {
         let movies = <Spinner />
 
         let filteredData = []
-        if (this.state.data) {
-
+        if (this.state.data.length !== 0) {
             this.state.data.forEach(movie => {
                 if (!App.blockedMovies.has(movie.id)) {
                     filteredData.push(movie)

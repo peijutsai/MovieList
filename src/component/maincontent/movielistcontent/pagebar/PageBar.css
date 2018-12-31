@@ -13,3 +13,7 @@
 .Right {
     margin-right: 100px;
 }
+
+.DisableClick {
+    pointer-events: none;
+}

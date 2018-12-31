@@ -12,7 +12,7 @@ const SortMovie = (props) => {
                 className="btn btn-primary btn-sm"
                 onClick={props.sortByTitle}>
                 Title
-                <img src={props.sortTitleStatus ? downarrow : uparrow} alt='arrow' />
+                <img src={props.sortTitleStatus ? uparrow : downarrow} alt='arrow' />
             </button>
             
             <button
@@ -20,7 +20,7 @@ const SortMovie = (props) => {
                 className="btn btn-primary btn-sm"
                 onClick={props.sortByVoteCount}>
                 Vote Count
-                <img src={props.sortVoteCountStatus ? downarrow : uparrow} alt='arrow' />
+                <img src={props.sortVoteCountStatus ? uparrow : downarrow} alt='arrow' />
             </button>
             
             <button
@@ -28,7 +28,7 @@ const SortMovie = (props) => {
                 className="btn btn-primary btn-sm"
                 onClick={props.sortByVoteAverage}>
                 Vote Average
-                <img src={props.sortVoteAverageStatus ? downarrow : uparrow} alt='arrow' />
+                <img src={props.sortVoteAverageStatus ? uparrow : downarrow} alt='arrow' />
             </button>
             
             <button
@@ -36,7 +36,7 @@ const SortMovie = (props) => {
                 className="btn btn-primary btn-sm"
                 onClick={props.sortByReleaseDate}>
                 Release Date
-                <img src={props.sortDateStatus ? downarrow : uparrow} alt='arrow' />
+                <img src={props.sortDateStatus ? uparrow : downarrow} alt='arrow' />
             </button>
         </div>
     )

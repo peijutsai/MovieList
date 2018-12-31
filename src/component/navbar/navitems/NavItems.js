@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, {Fragment} from 'react'
 import { Link } from 'react-router-dom'
 
 import './NavItems.css'
@@ -6,7 +6,7 @@ import './NavItems.css'
 const NavItems = (props) => {
 
     return (
-        <Fragment >
+        <Fragment>
             <div><Link to='/homepage' onClick={props.clicked}>HomePage</Link></div>
             <div><Link to='/movielist/1' onClick={props.clicked}>MovieList</Link></div>
             <div><Link to='/movielistofliked' onClick={props.clicked}>MovieOfLikedList</Link></div>
