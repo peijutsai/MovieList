@@ -1,13 +1,13 @@
-.MovieWrapper {
+.BlockedMovieWrapper {
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.LikedMovie {
+.BlockedMovie {
     text-align: center;
 }
 
-.Icon {
+.BlockedIcon {
     display: flex;
     justify-content: center;
     margin: 5px auto;

@@ -18,6 +18,8 @@ class MovieListContent extends Component {
             currentPage: +this.props.match.params.id,
             totalPage: null
         }
+
+        this.movieCahce = {}
     }
 
     // Call at the first time
@@ -27,14 +29,26 @@ class MovieListContent extends Component {
 
     // Call everytime when url has changed
     componentDidUpdate() {
-        if (this.state.currentPage != +this.props.match.params.id) {
-            this.fetchDataHandler(+this.props.match.params.id)
+        let page = +this.props.match.params.id
+
+        if (this.state.currentPage !== page) {
+            if (page in this.movieCahce) {
+                let val = this.movieCahce[page]
+                this.setState({
+                    data: val,
+                    currentPage: page
+                })
+            } else {
+                this.fetchDataHandler(page)
+            }
         }
     }
 
     fetchDataHandler = (page) => {
         axios.get('movie/popular?api_key=4bef8838c2fd078bd13d7127d8dedcd4&language=en-US&page=' + page)
             .then(Response => {
+                this.movieCahce[page] = Response['data']['results']
+
                 this.setState({
                     data: Response['data']['results'],
                     totalPage: Response['data']['total_pages'],
@@ -48,6 +62,13 @@ class MovieListContent extends Component {
             App.likedMovies.delete(id)
         } else {
             App.likedMovies.set(id, movie)
+        }
+        this.setState({})
+    }
+
+    addToBlockedListHandler = (id, movie) => {
+        if (!App.blockedMovies.has(id)) {
+            App.blockedMovies.set(id, movie)
         }
         this.setState({})
     }
@@ -133,15 +154,23 @@ class MovieListContent extends Component {
     render() {
         let movies = <Spinner />
 
+        let filteredData = []
         if (this.state.data) {
 
-            movies = this.state.data.map(res => {
+            this.state.data.forEach(movie => {
+                if (!App.blockedMovies.has(movie.id)) {
+                    filteredData.push(movie)
+                }
+            })
+
+            movies = filteredData.map(res => {
 
                 return (
                     <Movie
                         key={res['id']}
-                        toggleLikedMoviesHandler={this.toggleLikedMoviesHandler}
                         movie={res}
+                        toggleLikedMoviesHandler={this.toggleLikedMoviesHandler}
+                        addToBlockedListHandler={this.addToBlockedListHandler}
                     />
                 )
             })
@@ -154,11 +183,11 @@ class MovieListContent extends Component {
                     sortByVoteCount={this.sortByVoteCount}
                     sortByVoteAverage={this.sortByVoteAverage}
                     sortByReleaseDate={this.sortByReleaseDate} />
-                
+
                 <PageBar
                     currentpage={this.state.currentPage}
                     totalpage={this.state.totalPage} />
-                
+
                 <div>{movies}</div>
 
             </Fragment>

@@ -13,15 +13,35 @@ class MovieOflikedListContent extends Component {
 
     }
 
+    addToBlockedList = (id, movie) => {
+        if (!App.blockedMovies.has(id)) {
+            App.blockedMovies.set(id, movie)
+            App.likedMovies.delete(id)
+        }
+        this.setState({})
+    }
+
     render() {
+        const style = {
+            fontFamily: 'Charm, cursive',
+            fontSize: '20px',
+            textAlign: 'center'
+        }
         let likedMovie = []
+
         App.likedMovies.forEach((value, key) => {
-            likedMovie.push(<LikedMovie movie={value} key={key}  remove={this.removeHandler}/>)
+            likedMovie.push(
+                <LikedMovie
+                    key={key}
+                    movie={value}
+                    remove={this.removeHandler}
+                    addToBlockedList={this.addToBlockedList} />
+            )
         })
 
         return (
             <div>
-                <div className='Title'>Movie List of Liked</div>
+                <div style={style}>Movie List of Liked</div>
                 <div className="row">{likedMovie}</div>
             </div>
         )
