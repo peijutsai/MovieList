@@ -154,9 +154,11 @@ class MovieListContent extends Component {
                     sortByVoteCount={this.sortByVoteCount}
                     sortByVoteAverage={this.sortByVoteAverage}
                     sortByReleaseDate={this.sortByReleaseDate} />
+                
                 <PageBar
                     currentpage={this.state.currentPage}
                     totalpage={this.state.totalPage} />
+                
                 <div>{movies}</div>
 
             </Fragment>

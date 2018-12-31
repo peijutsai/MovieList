@@ -1,13 +1,31 @@
-import React from 'react'
+import React, { Component } from 'react'
+
 import App from '../../../App';
+import LikedMovie from './likedmovie/LikedMovie'
 
-const MovieOflikedListContent = () => {
+class MovieOflikedListContent extends Component {
 
-    console.log(App.likedMovies)
+    removeHandler = (id) => {
+        if (App.likedMovies.has(id)) {
+            App.likedMovies.delete(id)
+        }
+        this.setState({})
 
-    return (
-        <h1>This is MovieOflikedListContent</h1>
-    )
+    }
+
+    render() {
+        let likedMovie = []
+        App.likedMovies.forEach((value, key) => {
+            likedMovie.push(<LikedMovie movie={value} key={key}  remove={this.removeHandler}/>)
+        })
+
+        return (
+            <div>
+                <div className='Title'>Movie List of Liked</div>
+                <div className="row">{likedMovie}</div>
+            </div>
+        )
+    }
 }
 
 export default MovieOflikedListContent

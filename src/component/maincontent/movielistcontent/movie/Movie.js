@@ -22,7 +22,7 @@ const Movie = (props) => {
                         <img src={photoLink.concat(props.movie['poster_path'])} alt='photo' width="100%" style={{ maxWidth: '300px' }} className="rounded mx-auto d-block" />
                     </div>
                     <div className='col-sm-12 col-md-12 d-flex justify-content-center'>
-                        <button type="button" className="btn btn-danger Operation ButtomFont" onClick={()=> props.toggleLikedMoviesHandler(props.movie['id'], props.res)}>{ifLikedMovie}</button>
+                        <button type="button" className="btn btn-danger Operation ButtomFont" onClick={()=> props.toggleLikedMoviesHandler(props.movie['id'], props.movie)}>{ifLikedMovie}</button>
                         <button type="button" className="btn btn-secondary Operation ButtomFont" onClick={() => { App.blockedMovies.push(props.title) }}>Block</button>
                     </div>
                 </div>
