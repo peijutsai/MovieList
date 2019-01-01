@@ -72,6 +72,7 @@ class MovieListContent extends Component {
     addToBlockedListHandler = (id, movie) => {
         if (!App.blockedMovies.has(id)) {
             App.blockedMovies.set(id, movie)
+            App.likedMovies.delete(id)
         }
         this.setState({})
     }
