@@ -1,5 +1,7 @@
+$color-navbar-primary: #DCDCDC;
+
 .NavBar {
-    background-color: #DCDCDC;
+    background-color: $color-navbar-primary;
     top: 0;
     display: flex;
     justify-content: space-around;

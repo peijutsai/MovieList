@@ -1,5 +1,5 @@
 import React from 'react'
-import './MainTitle.css'
+import './MainTitle.scss'
 
 const MainContent = (props) => {
     return (

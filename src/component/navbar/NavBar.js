@@ -2,7 +2,7 @@ import React from 'react'
 
 import NavItems from './navitems/NavItems'
 
-import './NavBar.css'
+import './NavBar.scss'
 
 const NavBar = (props) => {
     return (

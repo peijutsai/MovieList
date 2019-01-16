@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './SortMovie.css'
+import './SortMovie.scss'
 
 import downarrow from '../../../../assests/down-arrow.png'
 import uparrow from '../../../../assests/up-arrow.png'

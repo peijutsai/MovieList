@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import { Link } from 'react-router-dom'
 
-import './NavItems.css'
+import './NavItems.scss'
 
 const NavItems = (props) => {
 

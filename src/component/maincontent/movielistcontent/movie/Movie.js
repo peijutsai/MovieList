@@ -1,13 +1,12 @@
 import React from 'react'
 
-import './Movie.css'
+import './Movie.scss'
 
 import App from '../../../../App';
 
 import heart from '../../../../assests/heart_movielist.png'
 
 const Movie = (props) => {
-    const photoLink = 'https://image.tmdb.org/t/p/w500'
 
     let ifLikedMovie = 'Like'
 
@@ -22,7 +21,7 @@ const Movie = (props) => {
             <div className="col-sm-12 col-md-4 offset-md-1">
                 <div className="row">
                     <div className='col-sm-12 col-md-12'>
-                        <img src={photoLink.concat(props.movie['poster_path'])} alt='main' width="100%" style={{ maxWidth: '300px' }} className="rounded mx-auto d-block" />
+                        <img src={props.movie['poster_path']} alt='main' width="100%" style={{ maxWidth: '300px' }} className="rounded mx-auto d-block" />
                     </div>
                     <div className='col-sm-12 col-md-12 d-flex justify-content-center'>
                         <button

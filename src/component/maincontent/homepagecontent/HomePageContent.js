@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './HomePageContent.css'
+import './HomePageContent.scss'
 
 const HomePageContent = () => {
     return (

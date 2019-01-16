@@ -1,0 +1,49 @@
+$color-sidedrawer-primary: #DCDCDC;
+
+@mixin to-display($display){
+    display: $display
+}
+
+@mixin to-transform($degree) {
+    transform: translateX($degree);
+}
+
+.SideDrawer {
+    position: fixed;
+    width: 280px;
+    max-width: 70%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 200;
+    background-color: $color-sidedrawer-primary;
+    padding: 32px 16px;
+    box-sizing: border-box;
+    transition: transform 0.5s ease-out;
+    text-decoration: underline;
+    @include to-display(flex);
+    align-items: center;
+    flex-direction: column;
+
+    button {
+        border: black 1px solid;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 35px;
+        align-self: flex-end;
+    }
+}
+
+@media (min-width: 500px) {
+    .SideDrawer {
+        @include to-display(none);
+    }
+}
+
+.Open {
+    @include to-transform(0);
+}
+
+.Close {
+    @include to-transform(-100%);
+}

@@ -1,0 +1,109 @@
+$style-font-title: 'Lobster', cursive;
+$style-font-font: 'Lobster Two', cursive;
+$style-font-buttomfont: 'Satisfy', cursive;
+$style-font-weight: bold;
+
+@mixin style-font-size($fontsize) {
+  font-size: $fontsize;
+}
+
+@mixin style-heartbeat-start {
+  -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+
+@mixin style-heartbeat-end {
+  left: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
+
+@mixin animation-heartbeat($scale) {
+  transform: scale($scale);
+}
+
+.Movie {
+  margin: 50px 0;
+}
+
+.Operation {
+  margin: 10px 5px 15px 5px;
+  width: 80px;
+}
+
+.Title {
+  font-family: $style-font-title;
+  font-weight: $style-font-weight;
+  @include style-font-size(30px);
+}
+
+.Font {
+  font-family: $style-font-font;
+  @include style-font-size(18px);
+}
+
+.ButtomFont {
+  font-family: $style-font-buttomfont;
+  font-weight: $style-font-weight;
+}
+
+
+.Heart {
+  width: 5%;
+  animation: heartbeat 1s infinite;
+}
+
+.Heart:before,
+.Heart:after {
+  @include style-heartbeat-start;
+}
+
+.Heart:after {
+  @include style-heartbeat-end;
+}
+
+@keyframes heartbeat
+{
+0%
+{
+  @include animation-heartbeat(.75);
+}
+20%
+{
+  @include animation-heartbeat(1);
+}
+40%
+{
+  @include animation-heartbeat(.75);
+}
+60%
+{
+  @include animation-heartbeat(1);
+}
+80%
+{
+  @include animation-heartbeat(.75);
+}
+100%
+{
+  @include animation-heartbeat(1);
+}
+}

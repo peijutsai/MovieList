@@ -48,7 +48,7 @@ class MovieListContent extends Component {
     }
 
     fetchDataHandler = (page) => {
-        axios.get('movie/popular?api_key=4bef8838c2fd078bd13d7127d8dedcd4&language=en-US&page=' + page)
+        axios.get('movies?page=' + page)
             .then(Response => {
                 this.movieCahce[page] = Response['data']['results']
 

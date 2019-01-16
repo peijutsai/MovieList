@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './SideDrawer.css'
+import './SideDrawer.scss'
 
 import NavItems from '../navitems/NavItems'
 

@@ -1,0 +1,15 @@
+$text-navitems-decoration: none;
+
+div {
+    a {
+        text-decoration: $text-navitems-decoration;
+        font-family: 'Charm', cursive;
+        color: black;
+
+        &:hover {
+            text-decoration: $text-navitems-decoration;
+            color: black;
+        }
+    }
+}
+

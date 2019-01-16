@@ -1,0 +1,17 @@
+.SortBar {
+    display: flex;
+    justify-content: center;
+    
+    button {
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 20px;
+        
+        img {
+            width: 13px;
+            margin-left: 5px;
+            margin-bottom: 3px;
+        }
+    }
+}
+

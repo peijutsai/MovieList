@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './PageBar.css'
+import './PageBar.scss'
 
 import nextpageicon from '../../../../assests/nextpageicon.png'
 import previouspageicon from '../../../../assests/previouspageicon.png'
